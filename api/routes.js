@@ -4,11 +4,11 @@ function routes(app, db){
         let email = req.body.email
         let idd = shortid.generate()
         if(email){
-            db.findOne({email}, (err, doc)=>{
+            db.collection('users').findOne({email}, (err, doc)=>{
                 if(doc){
                     res.status(400).json({"status":"Failed", "reason":"Already registered"})
                 }else{
-                    db.insertOne({email})
+                    db.collection('users').insertOne({email})
                     res.json({"status":"success","id":idd})
                 }
             })
@@ -20,7 +20,7 @@ function routes(app, db){
     app.post('/login', (req,res)=>{
         let email = req.body.email
         if(email){
-            db.findOne({email}, (err, doc)=>{
+            db.collection('users').findOne({email}, (err, doc)=>{
                 if(doc){
                     res.json({"status":"success","id":doc.id})
                 }else{
