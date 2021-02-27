@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+$primary-color: #2bd9fe;
+$inspire-black: #051923;
+$inspire-red: #f52f57;
+$inspire-yellow: #f5b841;
+
+@font-face{
+    font-family: lato;
+    src: url(assets/fonts/Lato-Regular.ttf) format('truetype');
+    
+}
+a {
+    font-family: lato;
+}
+body { margin:0; } /* Remove body margins */
