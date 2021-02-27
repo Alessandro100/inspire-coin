@@ -1,20 +1,15 @@
+const {createUser} = require('./user');
+
 const shortid = require('shortid')
-function routes(app, db){
+function routes(app, db, web3){
     app.post('/register', (req,res)=>{
-        let email = req.body.email
-        let idd = shortid.generate()
-        if(email){
-            db.collection('users').findOne({email}, (err, doc)=>{
-                if(doc){
-                    res.status(400).json({"status":"Failed", "reason":"Already registered"})
-                }else{
-                    db.collection('users').insertOne({email})
-                    res.json({"status":"success","id":idd})
-                }
-            })
-        }else{
-            res.status(400).json({"status":"Failed", "reason":"wrong input"})
-        }
+        createUser(db, req.body.email, web3).then(response => {
+            console.log("whats up");
+            console.log(response);
+            res.status(200).json(response);
+        }, err =>{
+            res.status(400).json(response);
+        })
     })
 
     app.post('/login', (req,res)=>{
