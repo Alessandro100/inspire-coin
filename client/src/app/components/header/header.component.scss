@@ -1,0 +1,36 @@
+@import "../../../styles.scss";
+
+.header {
+    position: relative;
+    background-color: $inspire-black;
+    height: 7em;
+    width: 100%;
+    .header-lhs img{
+        width: 110px;
+        height: 110px;
+        
+    }
+    .header-rhs {
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        right: 1em;
+        a {
+            color: $primary-color;
+            padding: 1.15em;
+            font-size: 25px;
+            text-decoration: none;
+        }
+    }
+}
+
+
+// triggers if the screen is less than 600px
+@media only screen and (max-width: 600px) {
+    .header-rhs {
+      display: none;
+    }
+
+  }
+  

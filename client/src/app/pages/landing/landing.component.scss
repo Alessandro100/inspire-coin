@@ -1,0 +1,12 @@
+@import "../../../styles.scss";
+.container {
+    height: 100vh; /* For 100% screen height */
+    background-image: url("../../../assets/wallpapers.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+  img{
+      background-size: cover;
+  }
+}
