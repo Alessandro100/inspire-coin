@@ -47,16 +47,17 @@ function getBalance(web3, walletAddress) {
 Example
 const majorityHolderAddress = '0xf9E2E731De7EC633615bFf32e9dF972c51D81edE';
 const testUserAddress = '0xc20aCbe36E6104ff2bEb0FBd5F7798734F1bc1c3';
-transferCoin(web3,majorityHolderAddress, testUserAddress, 1000);
+transferCoin(web3,db,majorityHolderAddress, testUserAddress, 1000);
 */
-async function transferCoin(web3, fromAddress, toAddress, amount) {
+async function transferCoin(web3, db, fromAddress, toAddress, amount) {
   let count = 0;
   await web3.eth.getTransactionCount(fromAddress).then(v => {
     count = v;
   });
   
   const contract = await new web3.eth.Contract(ABI, INSPRTOKENADDRESS);
-  const fromPrivateKey = process.env.inspire_coin_private_key;
+  const user = await db.collection('users').findOne({address: fromAddress});
+  const fromPrivateKey = user.privateKey; // this is the privatekey of the from user
   const fromPrivateKeyFormatted = Buffer.from(fromPrivateKey,'hex');
 
   const rawTransaction = {
