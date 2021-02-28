@@ -5,8 +5,25 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    position: relative;
 
   img{
-      background-size: cover;
+    background-size: cover;
+    width: 50%;
+    position: absolute;
+    bottom: 2em;
+  }
+  button{
+    background-color: $inspire-yellow;
+    position: absolute;
+    bottom: 10em;
+    right: 10em;
+  }
+  h1{
+    color: wheat;
+    font-size: 3em;
+    mix-blend-mode: color-dodge;
+    width: 65%;
+    position: absolute;
   }
 }

@@ -11,4 +11,5 @@ $inspire-yellow: #f5b841;
 a {
     font-family: lato;
 }
-body { margin:0; } /* Remove body margins */
+html, body { height: 100%; }
+body { margin: 0;}
