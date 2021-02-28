@@ -1,0 +1,54 @@
+<mat-card [ngSwitch]="step" class="central-element">
+
+    <div *ngSwitchCase="1" class="create-account">
+        <mat-form-field>
+            <mat-label>Email Adress</mat-label>
+            <input class="input-field" matInput placeholder="Guy@man.ca" value="">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>{{password}}</mat-label>
+            <input class="input-field" matInput placeholder=password disabled>
+            <button [cdkCopyToClipboard]="password">Copy to clipboard</button>
+
+        </mat-form-field>
+
+        <h1>This will be your account email and password</h1>
+        <button mat-raised-button (click)="verifyEmail()">Verify email</button>
+    </div>
+
+    <div *ngSwitchCase="2" class="create-account">
+        <h1>Please link your game account</h1>
+        <mat-form-field appearance="fill">
+            <mat-label>Game</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let game of games" [value]="game">
+                    {{game}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Region</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let region of regions" [value]="region">
+                    {{region}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <button mat-raised-button (click)="linkAccount()">Link account</button>
+    </div>
+<div *ngSwitchCase="3" class="">
+    <h1>You're all done! Account creation was successful. You may start earning inspire coins!</h1>
+    <button mat-raised-button (click)="bringToHome()"> See Challenges</button>
+
+</div>
+    <button class="proceed" mat-raised-button (click)="proceed()">Go Next Step</button>
+
+</mat-card>
