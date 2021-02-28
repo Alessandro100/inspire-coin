@@ -12,7 +12,7 @@ function createUser(db, email, web3) {
                     const password = generatePassword();
                     db.collection('users').insertOne({
                         email: email,
-                        password: key.encrypt(password),
+                        password: password,
                         ethAddress: newWallet.address,
                         privateKey: key.encrypt(newWallet.privateKey, 'base64')
                     })
@@ -25,6 +25,24 @@ function createUser(db, email, web3) {
     });
 }
 
+function authenticateUser(db, email, password) {
+    return new Promise((resolve, reject) =>{
+        db.collection('users').findOne({email: email, password: password}).then(user => {
+            if(user) {
+                console.log("this is the user that was found");
+                console.log(user);
+                resolve(user);
+            } else {
+                console.log("user not found");
+                reject({"status":"Failed", "reason":"user not found"});
+            }
+        }, err => {
+            console.log(err);
+            reject({"status":"Failed", "reason":"db error"});
+        })
+    })
+}
+
 function generatePassword() {
     const length = 8,
     charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
@@ -35,4 +53,4 @@ function generatePassword() {
     return password;
 }
 
-module.exports = {createUser}
+module.exports = {createUser, authenticateUser}
