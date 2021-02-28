@@ -1,0 +1,28 @@
+<h1>Welcome {{name}}</h1>
+<hr>
+<div class="container-games" *ngFor="let game of games">
+    <h1>{{game}} challenges</h1>
+    <div class="container-challenges">
+        <div class="challenge" *ngFor="let challenge of challenges">
+            <h2>{{challenge[0]}}</h2>
+            <h3>{{challenge[1]}}</h3>
+        </div>
+    </div>
+</div>
+<div class="bottom-scree-container">
+    <div class="stats">
+        <h1 *ngFor="let game of games">
+            {{game}}:
+            {{1}} <img alt="Gold medal" src="../../../assets/gold-medal-svgrepo-com.svg">
+            {{1}} <img alt="Silver medal" src="../../../assets/silver-medal-svgrepo-com.svg">
+            {{1}} <img alt="Bronze medal" src="../../../assets/bronze-medal-svgrepo-com.svg">
+            {{2699}}points
+        </h1>
+    </div>
+    <div class="wallet">
+        <h1> Wallet {{publicAdress}}
+        </h1>
+        <h1>Transfer coins</h1>
+        <h1>Gas fees: {{getGasFees()}}</h1>
+    </div>
+</div>

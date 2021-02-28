@@ -1,0 +1,37 @@
+@import "../../../styles.scss";
+
+.container-challenges {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.challenge {
+    color: wheat;
+    width: 33%;
+    height: 15%;
+    padding: 1em;
+    background-color: $inspire-black;
+    opacity: 95%;
+}
+.stats {
+    width: 40%;
+    background-color: $inspire-black;
+    opacity: 95%;
+    color: wheat;
+    img {
+        padding-top: 0.5em;
+        width: 1em;
+        height: 1em;
+    }
+}
+.wallet{
+    width: 40%;
+}
+.bottom-screen-container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    div{
+        display: inline;
+    }
+}

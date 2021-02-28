@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  isLoggedIn: boolean = false; // Temporarily hack to test dynamic header
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  isLanding(): boolean {
+
+    return this.router.url == '/' ? true : false;
+  }
+  logOut() {
+    // logs out the user and returns to landing page
+  }
 }

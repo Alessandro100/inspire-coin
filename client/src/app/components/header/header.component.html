@@ -1,12 +1,25 @@
 <div class="header">
     <div class="header-lhs">
-       <img alt="Inspire Logo" src="https://images.assetsdelivery.com/compings_v2/vectorstockvadim/vectorstockvadim2002/vectorstockvadim200204759.jpg">
+        <img alt="Inspire Logo"
+            src="https://images.assetsdelivery.com/compings_v2/vectorstockvadim/vectorstockvadim2002/vectorstockvadim200204759.jpg">
     </div>
-    <div class="header-rhs">
+    <div *ngIf=" !isLoggedIn && isLanding()" class="header-rhs">
+
         <a href="">About</a>
         <a>|</a>
         <a href="">Games</a>
         <a>|</a>
         <a href="">Log In</a>
     </div>
+
+    <div *ngIf=" !isLoggedIn && !isLanding()" class="header-rhs">
+
+       PROGRESSBAR YOOOOO
+    </div>
+
+    <div *ngIf="isLoggedIn" class="header-rhs">
+<button mat-raised-button (click)="logOut()"> LogOut</button>
+        LEMME LOG THE FUCK OUUT
+    </div>
 </div>
+
