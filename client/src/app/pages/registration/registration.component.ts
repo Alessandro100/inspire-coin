@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { UserService } from '../../user.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -12,8 +12,8 @@ export class RegistrationComponent implements OnInit {
   games = ["League Of Legends", "Valorant", "Overwatch", "StarCraft II"];
   regions = ["North America", "Europe West", "South Korea", "China"];
   selectedGame: string;
-  constructor(private router: Router) { }
-
+  email: string;
+  constructor(private router: Router, private userService: UserService) { }
   ngOnInit(): void {
   }
   getPassword(): string {
@@ -23,14 +23,19 @@ export class RegistrationComponent implements OnInit {
     // create account in db
     ++this.step; //brings the div to the next step
   }
-  linkAccount(){
+  createAccount() {
+    this.userService.setEmail(this.email);
+    console.log('Response', this.userService.createAccount());
+    this.userService.createAccount();
+  }
+  linkAccount() {
     //rito api stuffuu?
   }
   proceed() {
     // create account in db
     ++this.step; //brings the div to the next step
   }
-  bringToHome(){
+  bringToHome() {
     // LOGS IN THE USER
     this.router.navigateByUrl('/home');
   }
